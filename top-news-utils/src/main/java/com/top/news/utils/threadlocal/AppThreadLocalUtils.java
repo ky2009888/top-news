@@ -3,6 +3,9 @@ package com.top.news.utils.threadlocal;
 
 import com.top.news.model.user.pojos.ApUser;
 
+/**
+ * @author Lenovo
+ */
 public class AppThreadLocalUtils {
 
     private final  static ThreadLocal<ApUser> userThreadLocal = new ThreadLocal<>();

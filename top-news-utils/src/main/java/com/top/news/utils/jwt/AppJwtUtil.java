@@ -9,13 +9,21 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.*;
 
+/**
+ * @author Lenovo
+ */
 public class AppJwtUtil {
-
-    // TOKEN的有效期一天（S）
+    /**
+     * TOKEN的有效期一天（S）
+     */
     private static final int TOKEN_TIME_OUT = 3_600;
-    // 加密KEY
+    /**
+     * 加密KEY
+     */
     private static final String TOKEN_ENCRY_KEY = "MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY";
-    // 最小刷新间隔(S)
+    /**
+     * 最小刷新间隔(S)
+     */
     private static final int REFRESH_TIME = 300;
 
     /**
@@ -25,7 +33,7 @@ public class AppJwtUtil {
      * @return
      */
     public static String getToken(ApUser user) {
-       return getToken(user.getId());
+        return getToken(user.getId());
     }
 
     /**
@@ -48,21 +56,34 @@ public class AppJwtUtil {
         return getToken(user.getId());
     }
 
-    // 生产ID
-    private static String getToken(Long id){
+    /**
+     * 生产tokenId
+     *
+     * @param id
+     * @return tokenId
+     */
+    private static String getToken(Long id) {
         Map<String, Object> claimMaps = new HashMap<>();
-        claimMaps.put("id",id);
+        claimMaps.put("id", id);
         long currentTime = System.currentTimeMillis();
         return Jwts.builder()
                 .setId(UUID.randomUUID().toString())
-                .setIssuedAt(new Date(currentTime))  //签发时间
-                .setSubject("system")  //说明
-                .setIssuer("heima") //签发者信息
-                .setAudience("app")  //接收用户
-                .compressWith(CompressionCodecs.GZIP)  //数据压缩方式
-                .signWith(SignatureAlgorithm.HS512, generalKey()) //加密方式
-                .setExpiration(new Date(currentTime + TOKEN_TIME_OUT * 1000))  //过期时间戳
-                .addClaims(claimMaps) //cla信息
+                //签发时间
+                .setIssuedAt(new Date(currentTime))
+                //说明
+                .setSubject("system")
+                //签发者信息
+                .setIssuer("heima")
+                //接收用户
+                .setAudience("app")
+                //数据压缩方式
+                .compressWith(CompressionCodecs.GZIP)
+                //加密方式
+                .signWith(SignatureAlgorithm.HS512, generalKey())
+                //过期时间戳
+                .setExpiration(new Date(currentTime + TOKEN_TIME_OUT * 1000))
+                //cla信息
+                .addClaims(claimMaps)
                 .compact();
     }
 
@@ -73,9 +94,9 @@ public class AppJwtUtil {
      * @return
      */
     private static Jws<Claims> getJws(String token) {
-            return Jwts.parser()
-                    .setSigningKey(generalKey())
-                    .parseClaimsJws(token);
+        return Jwts.parser()
+                .setSigningKey(generalKey())
+                .parseClaimsJws(token);
     }
 
     /**
@@ -87,7 +108,7 @@ public class AppJwtUtil {
     public static Claims getClaimsBody(String token) {
         try {
             return getJws(token).getBody();
-        }catch (ExpiredJwtException e){
+        } catch (ExpiredJwtException e) {
             return null;
         }
     }
@@ -109,21 +130,21 @@ public class AppJwtUtil {
      * @return -1：有效，0：有效，1：过期，2：过期
      */
     public static int verifyToken(Claims claims) {
-        if(claims==null){
+        if (claims == null) {
             return 1;
         }
         try {
             claims.getExpiration()
                     .before(new Date());
             // 需要自动刷新TOKEN
-            if((claims.getExpiration().getTime()-System.currentTimeMillis())>REFRESH_TIME*1000){
+            if ((claims.getExpiration().getTime() - System.currentTimeMillis()) > REFRESH_TIME * 1000) {
                 return -1;
-            }else {
+            } else {
                 return 0;
             }
         } catch (ExpiredJwtException ex) {
             return 1;
-        }catch (Exception e){
+        } catch (Exception e) {
             return 2;
         }
     }

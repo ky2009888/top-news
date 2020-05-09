@@ -5,6 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * 日期格式化显示
+ *
+ * @author Lenovo
+ */
 public class DateUtils {
     public static String DATE_FORMAT = "yyyy-MM-dd";
 
@@ -377,7 +382,7 @@ public class DateUtils {
     /**
      * 在输入日期上增加（+）或减去（-）天数
      *
-     * @param date   输入日期
+     * @param date 输入日期
      * @param iday 要增加或减少的天数
      */
     public static Date addDay(Date date, int iday) {
@@ -409,7 +414,7 @@ public class DateUtils {
     /**
      * 在输入日期上增加（+）或减去（-）年份
      *
-     * @param date   输入日期
+     * @param date  输入日期
      * @param iyear 要增加或减少的年数
      */
     public static Date addYear(Date date, int iyear) {
