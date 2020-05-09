@@ -75,22 +75,6 @@
     <dependencyManagement>
         <dependencies>
             <!--内部依赖工程-->
-            <!--<dependency>
-                <artifactId>heima-leadnews-apis</artifactId>
-                <groupId>com.heima</groupId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <artifactId>heima-leadnews-common</artifactId>
-                <groupId>com.heima</groupId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <artifactId>heima-leadnews-model</artifactId>
-                <groupId>com.heima</groupId>
-                <version>${project.version}</version>
-            </dependency>
-           -->
             <dependency>
                 <groupId>com.top.news</groupId>
                 <artifactId>top-news-model</artifactId>

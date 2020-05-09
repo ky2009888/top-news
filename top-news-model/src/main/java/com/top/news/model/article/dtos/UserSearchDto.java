@@ -1,7 +1,7 @@
 package com.top.news.model.article.dtos;
 
 import com.top.news.model.annotation.IdEncrypt;
-import com.heima.model.user.pojos.ApUserSearch;
+import com.top.news.model.user.pojos.ApUserSearch;
 import lombok.Data;
 
 import java.util.List;

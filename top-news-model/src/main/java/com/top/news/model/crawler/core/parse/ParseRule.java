@@ -1,6 +1,6 @@
 package com.top.news.model.crawler.core.parse;
 
-import com.heima.model.crawler.enums.CrawlerEnum;
+import com.top.news.model.crawler.enums.CrawlerEnum;
 
 import java.util.List;
 

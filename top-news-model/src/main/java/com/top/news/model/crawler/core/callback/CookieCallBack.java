@@ -1,7 +1,7 @@
 package com.top.news.model.crawler.core.callback;
 
 
-import com.heima.model.crawler.core.cookie.CrawlerCookie;
+import com.top.news.model.crawler.core.cookie.CrawlerCookie;
 
 public interface CookieCallBack {
     /**

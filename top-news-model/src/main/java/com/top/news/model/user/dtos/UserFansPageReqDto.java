@@ -1,6 +1,6 @@
 package com.top.news.model.user.dtos;
 
-import com.heima.model.common.dtos.PageRequestDto;
+import com.top.news.model.common.dtos.PageRequestDto;
 import lombok.Data;
 
 @Data
