@@ -5,10 +5,14 @@ import lombok.Data;
 
 @Data
 public class ShareBehaviorDto {
-    // 设备ID
+    /**
+     * 设备ID
+     */
     @IdEncrypt
     Integer equipmentId;
-    // 文章ID
+    /**
+     * 文章ID
+     */
     @IdEncrypt
     Integer articleId;
 
