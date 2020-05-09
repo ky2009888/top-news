@@ -1,5 +1,11 @@
 package com.top.news.model.common.dtos;
 
+import lombok.Data;
+
+/**
+ * @author Lenovo
+ */
+@Data
 public class PageResponseResult extends ResponseResult {
     private Integer currentPage;
     private Integer size;
@@ -8,30 +14,6 @@ public class PageResponseResult extends ResponseResult {
     public PageResponseResult(Integer currentPage, Integer size, Integer total) {
         this.currentPage = currentPage;
         this.size = size;
-        this.total = total;
-    }
-
-    public int getCurrentPage() {
-        return currentPage;
-    }
-
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
         this.total = total;
     }
 }

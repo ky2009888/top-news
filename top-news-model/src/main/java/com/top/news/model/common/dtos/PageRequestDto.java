@@ -3,10 +3,12 @@ package com.top.news.model.common.dtos;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @author Lenovo
+ */
 @Data
 @Slf4j
 public class PageRequestDto {
-
     protected Integer size;
     protected Integer page;
 
