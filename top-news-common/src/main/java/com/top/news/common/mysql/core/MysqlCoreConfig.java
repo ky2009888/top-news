@@ -1,6 +1,7 @@
 package com.top.news.common.mysql.core;
 
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -18,28 +19,46 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 /**
+ * 数据连接池实例化的方法
+ *
  * @author Lenovo
  */
-@Getter
-@Setter
+@Data
 @Configuration
 @ConfigurationProperties(prefix = "mysql.core")
 @PropertySource("classpath:mysql-core-jdbc.properties")
-@MapperScan(basePackages = "com.top.news.model.mappers",sqlSessionFactoryRef = "mysqlCoreSessionFactory")
+@MapperScan(basePackages = "com.top.news.model.mappers", sqlSessionFactoryRef = "mysqlCoreSessionFactory")
 public class MysqlCoreConfig {
-
+    /**
+     * 定义数据库连接地址.
+     */
     String jdbcUrl;
+    /**
+     * 定义用户名.
+     */
     String jdbcUserName;
+    /**
+     * 定义密码.
+     */
     String jdbcPassword;
+    /**
+     * 定义驱动名称.
+     */
     String jdbcDriver;
-    String rootMapper;//mapper文件在classpath下存放的根路径
-    String aliasesPackage;//别名包
+    /**
+     * //mapper文件在classpath下存放的根路径
+     */
+    String rootMapper;
+    /**
+     * //别名包
+     */
+    String aliasesPackage;
 
     /**
      * 设置一个数据库的连接池
      */
     @Bean("mysqlCoreDataSource")
-    public DataSource mysqlCoreDataSource(){
+    public DataSource mysqlCoreDataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setUsername(this.getJdbcUserName());
         dataSource.setPassword(this.getRealPassword());
@@ -55,10 +74,10 @@ public class MysqlCoreConfig {
     /**
      * 密码反转操作
      */
-    public String getRealPassword(){
-        String jdbcPassword = this.getJdbcPassword();//123456
-        String reverse = StringUtils.reverse(jdbcPassword);//654321
-        return  reverse;
+    public String getRealPassword() {
+        String jdbcPassword = this.getJdbcPassword();
+        String reverse = StringUtils.reverse(jdbcPassword);
+        return reverse;
     }
 
     /**
@@ -81,10 +100,11 @@ public class MysqlCoreConfig {
         factoryBean.setConfiguration(configuration);
         return factoryBean;
     }
+
     /**
      * 拼接mapper.xml文件的存储位置
      */
-    public String getMapperFilePath(){
+    public String getMapperFilePath() {
         return new StringBuffer("classpath:").append(this.getRootMapper()).append("/**/*.xml").toString();
     }
 }
