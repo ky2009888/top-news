@@ -436,7 +436,7 @@
             </testResource>
         </testResources>
     </build>
-
+    <!--指定项目加载指定的配置文件-->
     <profiles>
         <profile>
             <id>dev</id>
@@ -448,6 +448,7 @@
         </profile>
         <profile>
             <id>test</id>
+            <!--表示当前环境激活-->
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
