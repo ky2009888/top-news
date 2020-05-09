@@ -1,6 +1,6 @@
 package com.top.news.model.behavior.pojos;
 
-import com.heima.model.annotation.IdEncrypt;
+import com.top.news.model.annotation.IdEncrypt;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 

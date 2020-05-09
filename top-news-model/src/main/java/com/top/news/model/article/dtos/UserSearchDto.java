@@ -1,6 +1,6 @@
 package com.top.news.model.article.dtos;
 
-import com.heima.model.annotation.IdEncrypt;
+import com.top.news.model.annotation.IdEncrypt;
 import com.heima.model.user.pojos.ApUserSearch;
 import lombok.Data;
 

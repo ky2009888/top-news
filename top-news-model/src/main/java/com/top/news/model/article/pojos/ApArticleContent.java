@@ -1,6 +1,6 @@
 package com.top.news.model.article.pojos;
 
-import com.heima.model.annotation.IdEncrypt;
+import com.top.news.model.annotation.IdEncrypt;
 import lombok.Data;
 
 @Data

@@ -1,7 +1,7 @@
 package com.top.news.model.user.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.heima.model.annotation.IdEncrypt;
+import com.top.news.model.annotation.IdEncrypt;
 import lombok.Data;
 
 import java.util.Date;
