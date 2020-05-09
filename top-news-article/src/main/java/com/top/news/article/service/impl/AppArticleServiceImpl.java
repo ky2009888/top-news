@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Service("appArticleService")
 @SuppressWarnings("all")
 public class AppArticleServiceImpl implements AppArticleService {
 

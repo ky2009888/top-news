@@ -6,10 +6,11 @@ import com.top.news.article.service.AppArticleService;
 import com.top.news.common.article.constans.ArticleConstans;
 import com.top.news.model.article.dtos.ArticleHomeDto;
 import com.top.news.model.common.dtos.ResponseResult;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @author Lenovo
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/article")
 public class ArticleHomeController implements ArticleHomeControllerApi {
-
-    @Autowired
+    /**
+     * 定义文章项目服务的句柄.
+     */
+    @Resource
     private AppArticleService appArticleService;
 
     @Override
@@ -30,12 +33,12 @@ public class ArticleHomeController implements ArticleHomeControllerApi {
     @Override
     @GetMapping("/loadmore")
     public ResponseResult loadMore(ArticleHomeDto dto) {
-        return appArticleService.load(dto,ArticleConstans.LOADTYPE_LOAD_MORE);
+        return appArticleService.load(dto, ArticleConstans.LOADTYPE_LOAD_MORE);
     }
 
     @Override
     @GetMapping("/loadnew")
     public ResponseResult loadNew(ArticleHomeDto dto) {
-        return appArticleService.load(dto,ArticleConstans.LOADTYPE_LOAD_NEW);
+        return appArticleService.load(dto, ArticleConstans.LOADTYPE_LOAD_NEW);
     }
 }
