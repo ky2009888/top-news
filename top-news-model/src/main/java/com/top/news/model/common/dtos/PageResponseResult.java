@@ -1,11 +1,13 @@
 package com.top.news.model.common.dtos;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author Lenovo
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class PageResponseResult extends ResponseResult {
     private Integer currentPage;
     private Integer size;

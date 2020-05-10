@@ -41,7 +41,7 @@
         <jsoup.version>1.10.2</jsoup.version>
         <jwt.version>0.9.1</jwt.version>
         <fastjson.version>1.2.58</fastjson.version>
-        <fastjson.dataformat.version>2.10.1</fastjson.dataformat.version>
+        <fastjson.dataformat.version>2.11.0</fastjson.dataformat.version>
         <spring.jwt.version>1.0.9.RELEASE</spring.jwt.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
@@ -197,11 +197,23 @@
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-cbor</artifactId>
                 <version>${fastjson.dataformat.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.dataformat</groupId>
                 <artifactId>jackson-dataformat-xml</artifactId>
                 <version>${fastjson.dataformat.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- spring colud -->
             <dependency>
@@ -314,6 +326,12 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>5.3.3</version>
+            </dependency>
+            <!-- jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.11.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

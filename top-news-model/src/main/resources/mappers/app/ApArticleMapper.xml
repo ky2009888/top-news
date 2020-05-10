@@ -54,7 +54,6 @@
             <if test="dto.tag!= '__all__'">
                 and aa.channel_id = #{dto.tag}
             </if>
-
         </where>
         limit #{dto.size}
     </select>
